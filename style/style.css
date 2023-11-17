@@ -1,0 +1,13 @@
+div.logo  {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+}
+
+img.logo{
+    height: 150px;
+    width:275px;
+}
+
