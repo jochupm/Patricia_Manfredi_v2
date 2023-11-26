@@ -2,38 +2,37 @@ import React from 'react';
 import ItemListContainer from './components/ItemListContainer';
 import NavBar from './components/NavBar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Cart from './components/Cart';
+import {Cart} from './components/Cart';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import Home from './components/Home';
-import Form from './components/Form';
-import ShoppingCartProvider from './context/ShoppingCartContext';
-import ComponentA from './components/ComponentA';
-import ComponentB from './components/ComponentB';
+import CartProvider from './provider/CartProvider';
+import Payment from './components/Payment';
+import NoResultPage from './components/NoResultsPage';
 
 
-
-const App = () => {
+function App () {
 
 
   return (
-    // <>
-    // <ShoppingCartProvider>
-    // <ComponentA/>
-    // <ComponentB/>
-    // </ShoppingCartProvider>
-    // </>
+
+
  <BrowserRouter>
+ <CartProvider>
 <NavBar />
 <Routes>
 <Route exact path ='/' element={<Home />}/>
-<Route exact path ='/cart' element={<Cart/>} />
-<Route exact path ='/product/:id' element={<ItemDetailContainer/>} />
 <Route exact path ='/category/:category' element={<ItemListContainer/>} />
 <Route exact path ='/category/' element={<ItemListContainer/>} />
-<Route exact path ='/form' element={<Form/>} />
+<Route exact path ='/item/:id' element={<ItemDetailContainer/>} />
+<Route exact path ='/cart' element={<Cart/>} />
+<Route exact path ='/payment' element={<Payment/>} />
+<Route exact path='/error' element={<NoResultPage />}/>
 
   </Routes>
+  </CartProvider>
   </BrowserRouter>  
+
+
  )
 }
 

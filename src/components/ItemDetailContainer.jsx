@@ -1,46 +1,62 @@
-import React from "react"
-import ItemDetail from "./ItemDetail"
-import ItemCount from "./ItemCount";
+// import { useParams } from 'react-router-dom'
+// import { useEffect, useState } from 'react'
+// import { ItemDetail } from './ItemDetail'
+// import { GetDetailProduct } from '../services/firebaseConfig'
+// const ItemDetailContainer = () => {
+//   const {id} = useParams()
 
-const ItemDetailContainer =() => {
+//   const [product, setProduct] = useState()
 
-  const productos = [
-    { id: 1,category:'men', name: 'Men T-shirt', color:'negro', price:100, description:'High Quality Mens t-shirt, 100% cotton',Imagen:'/img/mens-tshirt.jpg' },
-    { id: 2, category:'women',name: 'Women T-shirt', color:'pink',price:80,description:'High Quality Mens t-shirt, 100% cotton',Imagen:'/img/womens-tshirt.jpg' },
-    { id: 3, category:'unisex',name: 'Unisex Hoodie' , color:'brown',price:115,description:'High Quality Unisex hoodie, 100% cotton',Imagen:'/img/unisex-hoodie.jpg'},
-    { id: 4,category:'men', name: 'Men Pants', color:'yellow', price:285, description:'High Quality Mens t-shirt, 100% cotton',Imagen:'/img/mens-tshirt.jpg' },
-    { id: 5, category:'women',name: 'Women Pants', color:'brown',price:240,description:'High Quality Mens t-shirt, 100% cotton',Imagen:'/img/womens-tshirt.jpg' },
-    { id: 6, category:'unisex',name: 'Unisex Pants' , color:'orange',price:270,description:'High Quality Unisex hoodie, 100% cotton',Imagen:'/img/unisex-hoodie.jpg'},
- 
-  ];
-
-  const mostrarProductos = new Promise ((resolve, reject) => {
-    if (productos.length >0) {
-      setTimeout(()=> {
-        resolve(productos)
-      }, 500)
-    }else {
-      reject("Couldn't find any products")
-    }
-  })
-
-  mostrarProductos
-  .then((resultado) => {
-    console.log(resultado)
-  })
-  .catch ((error)=>{
-    console.log(error)
-  })
+//   useEffect(() => {
+//     GetDetailProduct(id).then(data => data.length !== 0 ? setProduct({id: id, ...data}) : setProduct(data))
+//   }, [id])
   
-    return(
-        <>
-        <ItemDetail 
-        productos={productos}/>
-        </>
-    )
-}
+//   return (
+//     <div className='flex justify-center my-10'>
+//       <ItemDetail {...product}/>
+//     </div>
+      
+//   )
+// }
+
+// export default ItemDetailContainer
 
 
 
+import { useParams } from 'react-router-dom';
+import { useEffect, useState, useContext } from 'react';
+import { GetDetailProduct } from '../services/firebaseConfig';
+import { CartContext } from '../provider/CartProvider';
+import ItemDetail from './ItemDetail'
 
-export default ItemDetailContainer
+
+const ItemDetailContainer = () => {
+  const { id } = useParams();
+  const { cart } = useContext(CartContext);
+
+  const [product, setProduct] = useState();
+  const [quantityInCart, setQuantityInCart] = useState(0);
+
+  useEffect(() => {
+    // Obtiene el producto detallado
+    GetDetailProduct(id).then((data) =>
+      data.length !== 0 ? setProduct({ id: id, ...data }) : setProduct(data)
+    );
+
+    // Obtiene la cantidad del producto en el carrito
+    const indexItem = cart.findIndex((item) => item.id === id);
+    if (indexItem !== -1) {
+      setQuantityInCart(cart[indexItem].quantity);
+    } else {
+      setQuantityInCart(0);
+    }
+  }, [id, cart]);
+
+  return (
+    <div className='flex justify-center my-10'>
+      <ItemDetail {...product} quantityInCart={quantityInCart} />
+    </div>
+  );
+};
+
+export default ItemDetailContainer;

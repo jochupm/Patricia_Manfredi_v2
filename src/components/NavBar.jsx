@@ -19,10 +19,7 @@ const NavBar = () => {
         <Spacer/>
         <Box p='10'>
           <Menu>
-          <Link to="/form"> <MenuItem >
-          Form
-                      </MenuItem>
-          </Link> 
+
             <Spacer/>
           <MenuButton as ={Button} rightIcon={<ChevronDownIcon/>}>
             Categories
@@ -52,11 +49,11 @@ const NavBar = () => {
           </Menu>
         </Box>
         <Spacer/>
-        <Box>
-          <Link to={"/cart"}>
-            <CartWidget/>
-          </Link>
-        </Box>
+        <div className="flex align-middle">
+        <CartWidget />
+
+      </div>
+
       </Flex>
        </div> 
 
@@ -64,3 +61,4 @@ const NavBar = () => {
 };
 
 export default NavBar;
+

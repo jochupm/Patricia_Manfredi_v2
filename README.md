@@ -8,4 +8,7 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 # ReactJs
 
-GIF: ![GIF of the app functioning](GIF/App_GIF.gif)
+GIF: ![GIF of the app functioning](GIF/GIF.gif)
+
+
+

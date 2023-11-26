@@ -1,38 +1,24 @@
-import React from "react";
-import { Card, CardBody, Stack, Heading, Text, Divider, CardFooter, ButtonGroup, Button, CardHeader } from '@chakra-ui/react'
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom"
 
-const Item = ({name, Imagen,id,price}) => {
+function Item(item) {
 
-    return (
-        <>
-        <div>
-            <Card maxW='sm'>
-                <CardBody>
-                <Stack mt='65' spacing='2'>
 
-<CardHeader>                        
-    <Heading size='md'>{name}</Heading>
-</CardHeader>
-                        <p></p>
-                        <img src={Imagen} alt=""  width="180px" height="252px" />
-                    </Stack>
-                    <Text>$ {price}</Text>
-                </CardBody>
-                <Divider/>
-                <CardFooter>
-                    <ButtonGroup spacing='8'>
-                        <Button variant='solid' colorScheme='blue'>
-                            <Link to={`/product/${id}`}>
-                                See Detail
-                            </Link>
-                        </Button>
-                    </ButtonGroup>
-                </CardFooter>
-            </Card>
-        </div>
-        </>
-    )
+  return (
+    <div className="flex flex-col max-w-sm p-6 overflow-hidden rounded bg-slate-500">
+      <img src={item.Imagen} alt="IMAGE" className="w-full" width="128" height="128" />
+ <b>{item.name}</b>
+        <p className="text-justify"><b>Price:</b> ${item.price}</p>
+         <p> <Link
+            className="font-bold hover:text-pink-500"
+            to={`/item/${item.id}`}
+          >
+            Details
+          </Link>
+          </p>
+      </div>
+  );
 }
 
-export default Item
+export default Item;
+
+
