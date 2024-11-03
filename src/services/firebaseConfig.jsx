@@ -21,6 +21,7 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app)
 
+// Products & moldeteca
 export const GetProducts = () => {
     return getDocs(collection(db, 'products')).then(response => {
         return response.docs.map((doc) => {
@@ -31,6 +32,18 @@ export const GetProducts = () => {
         console.log(err)
     })
 }
+
+export const GetMoldes = () => {
+    return getDocs(collection(db, 'moldeteca')).then(response => {
+        return response.docs.map((doc) => {
+            const data = doc.data()
+            return {id: doc.id, ...data}
+        })
+    }).catch(err => {
+        console.log(err)
+    })
+}
+
 
 export const GetFilteredProducts = (category) => {
     const queryString = query(collection(db, 'products'), where('category', '==', category))
@@ -45,9 +58,33 @@ export const GetFilteredProducts = (category) => {
     })
 }
 
+export const GetFilteredMoldes = (category) => {
+    const queryString = query(collection(db, 'moldeteca'), where('category', '==', category))
+
+    return getDocs(queryString).then(response => {
+        return response.docs.map((doc) => {
+            const data = doc.data()
+            return {id: doc.id, ...data}
+        })
+    }).catch(err => {
+        console.log(err)
+    })
+}
+
 export const GetDetailProduct = async (id) => {
     try {
         const docRef = doc(db, "products", id)
+        const docSnap = await getDoc(docRef)
+        return docSnap.data()
+    } catch (error) {
+        console.log(error)
+        return []
+    }
+}
+
+export const GetDetailMolde = async (id) => {
+    try {
+        const docRef = doc(db, "moldeteca", id)
         const docSnap = await getDoc(docRef)
         return docSnap.data()
     } catch (error) {

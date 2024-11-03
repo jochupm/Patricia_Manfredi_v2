@@ -1,13 +1,39 @@
 div.logo  {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-content: center;
     align-items: center;
 
 }
 
 img.logo{
-    height: 150px;
-    width:275px;
+    height: 154.48px;
+    width:150px;
 }
 
+/* Tamaño de fuente para los botones principales de la navbar */
+.navbar-button {
+    font-size: 1.2pc; /* Ajusta el tamaño según prefieras */
+  }
+  
+  /* Tamaño de fuente para los elementos de menú desplegable */
+  .navbar-menu-item {
+    font-size: 1pc; /* Ajusta el tamaño según prefieras */
+  }
+
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Centra los elementos en el contenedor */
+    padding: 10px 20px;
+    background-color: #f7f7f7; /* Fondo opcional */
+    width: 100%; /* Ancho para centrar mejor */
+    margin: 0 auto; /* Centra el contenedor en la página */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra opcional */
+  }
+  
+  
+  /* Estilo opcional para el logo */
+  .navbar-logo {
+    width: 100px; /* Ajusta el tamaño según sea necesario */
+  }
