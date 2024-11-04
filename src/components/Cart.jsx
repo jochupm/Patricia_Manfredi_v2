@@ -41,7 +41,7 @@ export const Cart = () => {
           </div>
           <div className="col-md-6">
             <Link to={`/item/${item.id}`}>
-              <p className="mb-1"><b>{item.name}</b></p>
+              <p className="mb-1"><b>{item.price}</b></p>
             </Link>
             <p className="mb-0">{item.description}</p>
           </div>
