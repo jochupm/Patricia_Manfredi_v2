@@ -43,6 +43,8 @@ function App () {
 <Route exact path='/error' element={<NoResultPage />}/>
 
   </Routes>
+
+  <Footer />
   </CartProvider>
   </BrowserRouter>  
 

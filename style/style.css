@@ -11,14 +11,38 @@ img.logo{
     width:150px;
 }
 
+.home-logo {
+  width: 100%;
+  height: auto;
+  max-width: 500px; /* Ajusta según sea necesario */
+  margin: 20px auto;
+  display: block;
+}
+
+h1{
+  text-align: center;
+}
+
+p{
+  text-align: center;
+}
+
+
 /* Tamaño de fuente para los botones principales de la navbar */
 .navbar-button {
-    font-size: 1.2pc; /* Ajusta el tamaño según prefieras */
+    font-size: 1.4pc; /* Ajusta el tamaño según prefieras */
   }
+
+  MenuButton {
+    font-size: 1.4pc; /* Ajusta el tamaño según prefieras */
+  }
+  /* .navbar-button:hover {
+    background-color: #7a3fd9;
+  } */
   
   /* Tamaño de fuente para los elementos de menú desplegable */
   .navbar-menu-item {
-    font-size: 1pc; /* Ajusta el tamaño según prefieras */
+    font-size: 1.2pc; /* Ajusta el tamaño según prefieras */
   }
 
   .navbar {

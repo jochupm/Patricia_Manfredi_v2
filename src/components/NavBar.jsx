@@ -18,16 +18,9 @@ const NavBar = () => {
 
       <Flex align="center" gap="4" className="navbar-links">
         {/* Primer Menu */}
-        <Menu>
-          <MenuButton as={Button} rightIcon={<ChevronDownIcon />} className="navbar-button">
-            Cursos online
-          </MenuButton>
-          <MenuList>
-            <Link to={`/cursos/category/${"Danza"}`}><MenuItem className="navbar-menu-item">Danza</MenuItem></Link>
-            <Link to={`/crusos/category/${"Ropa"}`}><MenuItem className="navbar-menu-item">Ropa</MenuItem></Link>
-            <Link to={`/cursos/category/`}><MenuItem className="navbar-menu-item">Todos</MenuItem></Link>
-          </MenuList>
-        </Menu>
+        <Button as={Link} to="/cursos" variant="link" className="navbar-button">
+  Cursos-online
+</Button>
 
         {/* Segundo Menu */}
         <Menu>

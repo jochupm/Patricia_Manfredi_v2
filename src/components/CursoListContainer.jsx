@@ -15,7 +15,7 @@ function CursoListContainer() {
         setLoading(true);
         let data;
         if (category !== undefined) {
-          data = await GetFilteredCurso(category);
+          data = await GetCurso(category);
         } else {
           data = await GetCurso();
         }

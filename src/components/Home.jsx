@@ -1,13 +1,15 @@
 import React from 'react'
+import '/Users/josep/Desktop/Web_Development/ReactJs/Patricia_Manfredi/style/style.css';
+import fondo from '/Users/josep/Desktop/Web_Development/ReactJs/Patricia_Manfredi/img/fondo.png';
 
 const Home = () => {
     return (
         <>
-<h1>Lorem ipsum dolor sit amet.</h1>       
-<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi nobis aliquam iste et nostrum impedit atque numquam ipsa quam temporibus. Saepe debitis veniam inventore architecto doloremque maxime corporis ducimus officia neque. Ipsum assumenda doloribus, debitis, odit ipsa consectetur nam dolore exercitationem perferendis nulla necessitatibus, iste repellendus temporibus eveniet dolores tempora! Laborum eligendi minima voluptatum modi sunt maiores ea eveniet vero natus assumenda numquam aut aliquam distinctio, adipisci rem vel! Consequatur id voluptatem in asperiores laborum aliquid! Fugit repellat necessitatibus provident ipsa eveniet explicabo nemo commodi similique fugiat accusamus consequatur, velit, quidem eos quam. Commodi optio quod eveniet, veniam sint recusandae.</p>
-
-      </>  
-    )
+            <img src={fondo} alt="Fondo Patricia Manfredi" className="home-logo" />
+            <h1>Lorem ipsum dolor sit amet.</h1>       
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit...</p>
+        </>  
+    );
 }
 
 export default Home

@@ -8,7 +8,7 @@ const Footer = () => {
       <Flex justify="center" mb={4} className="footer-social-icons">
         <IconButton
           as="a"
-          href="https://facebook.com"
+          href="https://www.facebook.com/Atelierpatriciamanfredi"
           aria-label="Facebook"
           icon={<FaFacebook />}
           size="lg"
@@ -17,7 +17,7 @@ const Footer = () => {
         />
         <IconButton
           as="a"
-          href="https://instagram.com"
+          href="https://www.instagram.com/atelier.patricia.manfredi/"
           aria-label="Instagram"
           icon={<FaInstagram />}
           size="lg"
@@ -26,7 +26,7 @@ const Footer = () => {
         />
         <IconButton
           as="a"
-          href="https://whatsapp.com"
+          href="https://wa.me/+5493434159927"
           aria-label="WhatsApp"
           icon={<FaWhatsapp />}
           size="lg"
@@ -45,17 +45,14 @@ const Footer = () => {
       </Flex>
 
       <Flex justify="center" gap={8} className="footer-links">
-        <Link href="/cursos-online" className="footer-link">
+        <Link href="/cursos" className="footer-link">
           Cursos Online
-        </Link>
-        <Link href="/presenciales" className="footer-link">
-          Presenciales
         </Link>
         <Link href="/moldeteca" className="footer-link">
           Moldeteca
         </Link>
-        <Link href="/tienda" className="footer-link">
-          Tienda
+        <Link href="/merceria" className="footer-link">
+          Merceria
         </Link>
         <Link href="/somos" className="footer-link">
           Somos
