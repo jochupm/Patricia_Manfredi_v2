@@ -1,106 +1,82 @@
 div.logo  {
-    display: flex;
-    justify-content: left;
-    align-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: left;
+  align-content: center;
+  align-items: center;
 
 }
 
 img.logo{
-    height: 154.48px;
-    width:150px;
+  height: 154.48px;
+  width:150px;
 }
 
 .home-logo {
-  width: 100%;
-  height: auto;
-  max-width: 500px; /* Ajusta según sea necesario */
-  margin: 20px auto;
-  display: block;
+width: 100%;
+height: auto;
+max-width: 500px; /* Ajusta según sea necesario */
+margin: 20px auto;
+display: block;
 }
 
 h1{
-  text-align: center;
+text-align: center;
+font: Basics Serif Free Regular;
 }
 
 p{
-  text-align: center;
+text-align: center;
+font: Champagne & Limousines;
 }
 
 
-/* Tamaño de fuente para los botones principales de la navbar */
-.navbar-button {
-    font-size: 1.4pc; /* Ajusta el tamaño según prefieras */
-  }
 
-  MenuButton {
-    font-size: 1.4pc; /* Ajusta el tamaño según prefieras */
-  }
-  /* .navbar-button:hover {
-    background-color: #7a3fd9;
-  } */
-  
-  /* Tamaño de fuente para los elementos de menú desplegable */
-  .navbar-menu-item {
-    font-size: 1.2pc; /* Ajusta el tamaño según prefieras */
-  }
 
-  .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Centra los elementos en el contenedor */
-    padding: 10px 20px;
-    background-color: #f7f7f7; /* Fondo opcional */
-    width: 100%; /* Ancho para centrar mejor */
-    margin: 0 auto; /* Centra el contenedor en la página */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra opcional */
-  }
-
-  /* Estilo para el contenedor principal del pie de página */
+/* Estilo para el contenedor principal del pie de página */
 .footer-container {
-    background-color: #f7f7f7; /* Fondo gris claro */
-    padding: 24px 0; /* Espaciado vertical */
-    margin-top: 40px; /* Separación del contenido superior */
-  }
-  
-  /* Estilo para el contenedor de iconos de redes sociales */
-  .footer-social-icons {
-    margin-bottom: 16px;
-  }
-  
-  /* Estilo para los iconos de redes sociales */
-  .footer-icon-button {
-    color: #4b0082; /* Color púrpura oscuro */
-    margin: 0 8px;
-    transition: transform 0.2s;
-  }
-  
-  .footer-icon-button:hover {
-    transform: scale(1.1); /* Efecto de agrandamiento al pasar el cursor */
-  }
-  
-  /* Estilo para los enlaces de navegación en el pie de página */
-  .footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 32px; /* Espacio entre los enlaces */
-    font-size: 1.125rem; /* Tamaño de fuente de 18px */
-  }
-  
-  /* Estilo para cada enlace individual */
-  .footer-link {
-    color: black;
-    text-decoration: none;
-    transition: text-decoration 0.2s;
-  }
-  
-  .footer-link:hover {
-    text-decoration: underline;
-  }
-  
-  
-  
-  /* Estilo opcional para el logo */
-  .navbar-logo {
-    width: 100px; /* Ajusta el tamaño según sea necesario */
-  }
+  background-color: #f7f7f7; /* Fondo gris claro */
+  padding: 24px 0; /* Espaciado vertical */
+  margin-top: 40px; /* Separación del contenido superior */
+}
+
+/* Estilo para el contenedor de iconos de redes sociales */
+.footer-social-icons {
+  margin-bottom: 16px;
+}
+
+/* Estilo para los iconos de redes sociales */
+.footer-icon-button {
+  color: #4b0082; /* Color púrpura oscuro */
+  margin: 0 8px;
+  transition: transform 0.2s;
+}
+
+.footer-icon-button:hover {
+  transform: scale(1.1); /* Efecto de agrandamiento al pasar el cursor */
+}
+
+/* Estilo para los enlaces de navegación en el pie de página */
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 32px; /* Espacio entre los enlaces */
+  font-size: 1.125rem; /* Tamaño de fuente de 18px */
+}
+
+/* Estilo para cada enlace individual */
+.footer-link {
+  color: black;
+  text-decoration: none;
+  transition: text-decoration 0.2s;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+
+
+/* Estilo opcional para el logo */
+.navbar-logo {
+  width: 100px; /* Ajusta el tamaño según sea necesario */
+}
