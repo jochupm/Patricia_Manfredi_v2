@@ -1,82 +1,76 @@
-div.logo  {
-  display: flex;
-  justify-content: left;
-  align-content: center;
-  align-items: center;
-
-}
-
-img.logo{
-  height: 154.48px;
-  width:150px;
-}
-
-.home-logo {
-width: 100%;
-height: auto;
-max-width: 500px; /* Ajusta según sea necesario */
-margin: 20px auto;
-display: block;
-}
-
-h1{
-text-align: center;
-font: Basics Serif Free Regular;
-}
-
-p{
-text-align: center;
-font: Champagne & Limousines;
-}
-
-
-
-
-/* Estilo para el contenedor principal del pie de página */
-.footer-container {
-  background-color: #f7f7f7; /* Fondo gris claro */
-  padding: 24px 0; /* Espaciado vertical */
-  margin-top: 40px; /* Separación del contenido superior */
-}
-
-/* Estilo para el contenedor de iconos de redes sociales */
-.footer-social-icons {
-  margin-bottom: 16px;
-}
-
-/* Estilo para los iconos de redes sociales */
-.footer-icon-button {
-  color: #4b0082; /* Color púrpura oscuro */
-  margin: 0 8px;
-  transition: transform 0.2s;
-}
-
-.footer-icon-button:hover {
-  transform: scale(1.1); /* Efecto de agrandamiento al pasar el cursor */
-}
-
-/* Estilo para los enlaces de navegación en el pie de página */
-.footer-links {
+img.home-logo {
+  width: 80%;
+  object-fit: fill;
   display: flex;
   justify-content: center;
-  gap: 32px; /* Espacio entre los enlaces */
-  font-size: 1.125rem; /* Tamaño de fuente de 18px */
 }
 
-/* Estilo para cada enlace individual */
-.footer-link {
-  color: black;
+
+
+/* General Navbar Styling */
+.navbar-container {
+  background-color: #ffffff; /* Match footer background */
+  display: flex;
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Separate logo and links */
+  padding: 10px 20px; /* Add spacing */
+  width: 100%; /* Full width */
+  box-sizing: border-box; /* Include padding in width calculation */
+  /* box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); Optional shadow */
+}
+
+/* Logo Styling */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+img.logo {
+  height: 60px; /* Adjust logo size */
+  width: auto; /* Maintain aspect ratio */
+  margin-right: 80px; /* Add spacing between logo and text if needed */
+}
+
+/* Menu Items Styling */
+.navbar-links {
+  display: flex;
+  align-items: center; /* Center items vertically */
+
+  justify-content: center; /* Push links to the right */
+  gap: 50px; /* Add spacing between links */
+}
+
+.navbar-link {
+  color: black; /* Match footer color */
   text-decoration: none;
-  transition: text-decoration 0.2s;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  transition: color 0.3s ease;
 }
 
-.footer-link:hover {
+.navbar-link:hover {
+  color: #4b0082; /* Hover color */
   text-decoration: underline;
 }
 
+/* Responsiveness */
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column; /* Stack vertically */
+    align-items: center; /* Center items horizontally */
+  }
 
-
-/* Estilo opcional para el logo */
-.navbar-logo {
-  width: 100px; /* Ajusta el tamaño según sea necesario */
+  .navbar-links {
+    justify-content: center; /* Center links on smaller screens */
+    flex-direction: column; /* Stack links vertically */
+    gap: 16px; /* Add spacing between links */
+  }
 }
+
+
+
+
+
+
+
+

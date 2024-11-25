@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Box, IconButton, Link } from '@chakra-ui/react';
+import { Flex, Box, IconButton, Link, Text } from '@chakra-ui/react';
 import { FaFacebook, FaInstagram, FaWhatsapp, FaYoutube } from 'react-icons/fa';
 
 const Footer = () => {
@@ -44,7 +44,7 @@ const Footer = () => {
         />
       </Flex>
 
-      <Flex justify="center" gap={8} className="footer-links">
+      <Flex justify="center" gap={8} className="footer-links" mb={4}>
         <Link href="/cursos" className="footer-link">
           Cursos Online
         </Link>
@@ -52,17 +52,22 @@ const Footer = () => {
           Moldeteca
         </Link>
         <Link href="/merceria" className="footer-link">
-          Merceria
+          Mercería
         </Link>
-        <Link href="/somos" className="footer-link">
-          Somos
+        <Link href="/quienes-somos" className="footer-link">
+          Quienes Somos
         </Link>
         <Link href="/blog" className="footer-link">
           Blog
         </Link>
       </Flex>
+
+      <Text textAlign="center" fontSize="sm" color="gray.500" mt={4}>
+        © 2024 Atelier Patricia Manfredi - Todos los derechos reservados
+      </Text>
     </Box>
   );
 };
 
 export default Footer;
+
