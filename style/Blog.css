@@ -38,7 +38,6 @@
   }
   
   .article-image {
-    object-fit: scale-down;
     width: fit-content;
     align-content: center;
     height: 200px;

@@ -6,17 +6,15 @@ img.home-logo {
 }
 
 
-
 /* General Navbar Styling */
 .navbar-container {
   background-color: #ffffff; /* Match footer background */
   display: flex;
   align-items: center; /* Center items vertically */
-  justify-content: center; /* Separate logo and links */
+  justify-content: center; /* Center content */
   padding: 10px 20px; /* Add spacing */
   width: 100%; /* Full width */
-  box-sizing: border-box; /* Include padding in width calculation */
-  /* box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); Optional shadow */
+  /* box-sizing: border-box; Include padding in width calculation */
 }
 
 /* Logo Styling */
@@ -35,8 +33,7 @@ img.logo {
 .navbar-links {
   display: flex;
   align-items: center; /* Center items vertically */
-
-  justify-content: center; /* Push links to the right */
+  justify-content: center; /* Push links to the center */
   gap: 50px; /* Add spacing between links */
 }
 
@@ -53,6 +50,43 @@ img.logo {
   text-decoration: underline;
 }
 
+/* Dropdown for Cursos */
+.menu-button {
+  background: none; /* No background for Cursos dropdown */
+  color: black; /* Match navbar link color */
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  font-weight: normal;
+  border: none; /* Remove button border */
+  cursor: pointer;
+  padding: 0; /* Remove padding to match link style */
+}
+
+.menu-button:hover {
+  color: #4b0082; /* Hover color */
+  text-decoration: underline;
+}
+
+.menu-list {
+  background-color: #ffffff; /* Dropdown background */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  border-radius: 4px; /* Rounded corners */
+  padding: 10px 0;
+}
+
+.menu-item {
+  color: black;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 8px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.menu-item:hover {
+  background-color: #f0f0f0; /* Highlight on hover */
+  color: #4b0082;
+}
+
 /* Responsiveness */
 @media (max-width: 768px) {
   .navbar-container {
@@ -65,12 +99,8 @@ img.logo {
     flex-direction: column; /* Stack links vertically */
     gap: 16px; /* Add spacing between links */
   }
+
+  .menu-list {
+    position: static; /* Ensure dropdown appears inline */
+  }
 }
-
-
-
-
-
-
-
-

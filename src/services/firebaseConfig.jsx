@@ -44,21 +44,8 @@ export const GetMolde = () => {
     })
 }
 
-export const GetCurso = () => {
-    return getDocs(collection(db, 'cursos')).then(response => {
-        return response.docs.map((doc) => {
-            const data = doc.data()
-            return {id: doc.id, ...data}
-        })
-    }).catch(err => {
-        console.log(err)
-    })
-}
-
-// export const GetFilteredProducts = (category) => {
-//     const queryString = query(collection(db, 'products'), where('category', '==', category))
-
-//     return getDocs(queryString).then(response => {
+// export const GetCurso = () => {
+//     return getDocs(collection(db, 'cursos')).then(response => {
 //         return response.docs.map((doc) => {
 //             const data = doc.data()
 //             return {id: doc.id, ...data}
@@ -67,6 +54,20 @@ export const GetCurso = () => {
 //         console.log(err)
 //     })
 // }
+
+export const GetCurso = () => {
+    return getDocs(collection(db, 'cursos'))
+      .then((response) => {
+        return response.docs.map((doc) => {
+          const data = doc.data();
+          return { id: doc.id, ...data }; // Devuelve datos completos junto con el ID
+        });
+      })
+      .catch((err) => {
+        console.error("Error fetching courses:", err);
+        return [];
+      });
+  };
 
 export const GetFilteredMolde = (category) => {
     const queryString = query(collection(db, 'moldeteca'), where('category', '==', category))
@@ -81,18 +82,44 @@ export const GetFilteredMolde = (category) => {
     })
 }
 
-export const GetFilteredCurso = (category) => {
-    const queryString = query(collection(db, 'cursos'), where('category', '==', category))
+// export const GetFilteredCurso = (category) => {
+//     const queryString = query(collection(db, 'cursos'), where('category', '==', category))
 
-    return getDocs(queryString).then(response => {
-        return response.docs.map((doc) => {
-            const data = doc.data()
-            return {id: doc.id, ...data}
+//     return getDocs(queryString).then(response => {
+//         return response.docs.map((doc) => {
+//             const data = doc.data()
+//             return {id: doc.id, ...data}
+//         })
+//     }).catch(err => {
+//         console.log(err)
+//     })
+// }
+
+// Obtener cursos filtrados por categoría
+export const GetFilteredCurso = (category) => {
+    // Si la categoría es "Todos", obtenemos todos los cursos
+    if (category === "Todos") {
+        return GetCurso(); // Llama a la función que obtiene todos los cursos
+    }
+
+    // Si hay una categoría específica, filtra por esa categoría
+    const queryString = query(
+        collection(db, "cursos"),
+        where("category", "==", category)
+    );
+
+    return getDocs(queryString)
+        .then((response) => {
+            return response.docs.map((doc) => {
+                const data = doc.data();
+                return { id: doc.id, ...data };
+            });
         })
-    }).catch(err => {
-        console.log(err)
-    })
-}
+        .catch((err) => {
+            console.log(err);
+        });
+};
+
 
 export const GetDetailProduct = async (id) => {
     try {
@@ -116,16 +143,35 @@ export const GetDetailMolde = async (id) => {
     }
 }
 
+// export const GetDetailCurso = async (id) => {
+//     try {
+//         const docRef = doc(db, "cursos", id)
+//         const docSnap = await getDoc(docRef)
+//         return docSnap.data()
+//     } catch (error) {
+//         console.log(error)
+//         return []
+//     }
+// }
+
+// Obtener detalles de un curso por ID
 export const GetDetailCurso = async (id) => {
     try {
-        const docRef = doc(db, "cursos", id)
-        const docSnap = await getDoc(docRef)
-        return docSnap.data()
+      const docRef = doc(db, "cursos", id); // Reemplaza "db" con tu instancia de Firestore
+      const docSnap = await getDoc(docRef);
+  
+      if (docSnap.exists()) {
+        return docSnap.data(); // Retorna los datos del documento
+      } else {
+        console.error("No se encontró el documento.");
+        return null; // Retorna null si no existe el documento
+      }
     } catch (error) {
-        console.log(error)
-        return []
+      console.error("Error al obtener el documento:", error);
+      return null; // Maneja errores retornando null
     }
-}
+  };
+
 
 export const InsertNewBuy = async (data) => {
     return await addDoc(collection(db, 'paymentTicket'), data).then(({id}) => {return id})

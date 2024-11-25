@@ -9,6 +9,7 @@ const Footer = () => {
         <IconButton
           as="a"
           href="https://www.facebook.com/Atelierpatriciamanfredi"
+          target="_blank"
           aria-label="Facebook"
           icon={<FaFacebook />}
           size="lg"
@@ -18,6 +19,7 @@ const Footer = () => {
         <IconButton
           as="a"
           href="https://www.instagram.com/atelier.patricia.manfredi/"
+          target="_blank"
           aria-label="Instagram"
           icon={<FaInstagram />}
           size="lg"
@@ -27,6 +29,7 @@ const Footer = () => {
         <IconButton
           as="a"
           href="https://wa.me/+5493434159927"
+          target="_blank"
           aria-label="WhatsApp"
           icon={<FaWhatsapp />}
           size="lg"
@@ -36,6 +39,7 @@ const Footer = () => {
         <IconButton
           as="a"
           href="https://youtube.com"
+          target="_blank"
           aria-label="YouTube"
           icon={<FaYoutube />}
           size="lg"
@@ -45,14 +49,11 @@ const Footer = () => {
       </Flex>
 
       <Flex justify="center" gap={8} className="footer-links" mb={4}>
-        <Link href="/cursos" className="footer-link">
+        <Link href="/cursos/todos" className="footer-link">
           Cursos Online
         </Link>
         <Link href="/moldeteca" className="footer-link">
           Moldeteca
-        </Link>
-        <Link href="/merceria" className="footer-link">
-          Mercería
         </Link>
         <Link href="/quienes-somos" className="footer-link">
           Quienes Somos

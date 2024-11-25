@@ -1,92 +1,51 @@
-// import { useParams } from 'react-router-dom'
-// import { useEffect, useState } from 'react'
-// import { ItemDetail } from './ItemDetail'
-// import { GetDetailProduct } from '../services/firebaseConfig'
-// const ItemDetailContainer = () => {
-//   const {id} = useParams()
-
-//   const [product, setProduct] = useState()
-
-//   useEffect(() => {
-//     GetDetailProduct(id).then(data => data.length !== 0 ? setProduct({id: id, ...data}) : setProduct(data))
-//   }, [id])
-  
-//   return (
-//     <div className='flex justify-center my-10'>
-//       <ItemDetail {...product}/>
-//     </div>
-      
-//   )
-// }
-
-// export default ItemDetailContainer
-
-
-
-import { useParams } from 'react-router-dom';
-import { useEffect, useState, useContext } from 'react';
-import { GetDetailCurso, GetDetailMolde } from '../services/firebaseConfig';
-import { CartContext } from '../provider/CartProvider';
-import CursosDetail from './CursosDetail'
-import Cursos from './Cursos';
-
-
-// const ItemDetailContainer = () => {
-//   const { id } = useParams();
-//   const { cart } = useContext(CartContext);
-
-//   const [product, setProduct] = useState();
-//   const [quantityInCart, setQuantityInCart] = useState(0);
-
-//   useEffect(() => {
-//     // Obtiene el producto detallado
-//     GetDetailProduct(id).then((data) =>
-//       data.length !== 0 ? setProduct({ id: id, ...data }) : setProduct(data)
-//     );
-
-//     // Obtiene la cantidad del producto en el carrito
-//     const indexItem = cart.findIndex((item) => item.id === id);
-//     if (indexItem !== -1) {
-//       setQuantityInCart(cart[indexItem].quantity);
-//     } else {
-//       setQuantityInCart(0);
-//     }
-//   }, [id, cart]);
-
-//   return (
-//     <div className='flex justify-center my-10'>
-//       <ItemDetail {...product} quantityInCart={quantityInCart} />
-//     </div>
-//   );
-// };
-
-// export default ItemDetailContainer;
+import { useParams } from "react-router-dom";
+import { useEffect, useState, useContext } from "react";
+import { GetDetailCurso } from "../services/firebaseConfig"; // Asegúrate de que GetDetailCurso está correctamente implementado
+import { CartContext } from "../provider/CartProvider";
+import CursosDetail from "./CursosDetail";
 
 const CursosDetailContainer = () => {
   const { id } = useParams();
   const { cart } = useContext(CartContext);
 
-  const [cursos, setCurso] = useState();
+  const [curso, setCurso] = useState(null);
   const [quantityInCart, setQuantityInCart] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Obtiene el producto detallado
-    GetDetailCurso(id).then((data) =>
-      data.length !== 0 ? setCurso({ id: id, ...data }) : setCurso(data)
-    );
+    const fetchCurso = async () => {
+      try {
+        setLoading(true);
+        const data = await GetDetailCurso(id);
+        if (data) {
+          setCurso({ id, ...data });
+        } else {
+          setCurso(null);
+        }
 
-    // Obtiene la cantidad del producto en el carrito
-    const indexItem = cart.findIndex((item) => item.id === id);
-    if (indexItem !== -1) {
-      setQuantityInCart(cart[indexItem].quantity);
-    } else {
-      setQuantityInCart(0);
-    }
+        const indexItem = cart.findIndex((item) => item.id === id);
+        setQuantityInCart(indexItem !== -1 ? cart[indexItem].quantity : 0);
+      } catch (error) {
+        console.error("Error fetching course details:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCurso();
   }, [id, cart]);
 
+  if (loading) {
+    return <p>Loading course details...</p>;
+  }
+
+  if (!curso) {
+    return <p>No course found.</p>;
+  }
+
   return (
-    <div className='flex justify-center my-10'>
-      <Cursos {...cursos} quantityInCart={quantityInCart} />
+    <div className="flex justify-center my-10">
+      <CursosDetail {...curso} quantityInCart={quantityInCart} />
     </div>
   );
 };

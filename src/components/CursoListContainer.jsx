@@ -14,14 +14,14 @@ function CursoListContainer() {
       try {
         setLoading(true);
         let data;
-        if (category !== undefined) {
-          data = await GetCurso(category);
+        if (category) {
+          data = await GetFilteredCurso(category);
         } else {
           data = await GetCurso();
         }
         setCurso(data);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       } finally {
         setLoading(false);
       }
@@ -37,9 +37,9 @@ function CursoListContainer() {
   return (
     <div className="container mt-5">
       <div className="row">
-        {cursos.map((item) => (
-          <div key={cursos.id} className="col-md-4 mb-4">
-            <Cursos {...cursos} />
+        {cursos.map((curso) => (
+          <div key={curso.id} className="col-md-4 mb-4">
+            <Cursos {...curso} />
           </div>
         ))}
       </div>
