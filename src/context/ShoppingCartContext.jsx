@@ -14,13 +14,13 @@ const [cart, setCart] = useState ([])
 const [badge, setBadge] = useState (0)
 
 
-const agregarAlCarrito= (item, cantidad)=>{
-if (cart.includes({...item, cantidad})){
-    alert(`${cantidad} items of ${item.name}added to your cart`)
-    item.cantidad=+cantidad;}
+const agregarAlCarrito= (curso, cantidad)=>{
+if (cart.includes({...curso, cantidad})){
+    alert(`${cantidad} curso of ${curso.name}added to your cart`)
+    curso.cantidad=+cantidad;}
 else {
-    item.cantidad= cantidad;
-    setCart(prevState => [...prevState,{...item, cantidad}])
+    curso.cantidad= cantidad;
+    setCart(prevState => [...prevState,{...curso, cantidad}])
 }
 console.log(cart)
 

@@ -74,4 +74,18 @@
   .read-more-button:hover {
     background-color: #357ABD;
   }
-  
+
+
+ ## Centrado de las imágenes en los blogs 
+.blog-image-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.blog-image {
+  max-width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+}

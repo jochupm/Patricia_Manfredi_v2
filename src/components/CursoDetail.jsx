@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../provider/CartProvider";
 import { ItemQuantitySelector } from "./ItemQuantitySelector";
 
-const MerceriaDetail = ({ id, description, price, Imagen, quantityInCart }) => {
+const CursoDetail = ({ id, Imagen, category, price, quantityInCart }) => {
   const [quantity, setQuantity] = useState(quantityInCart || 0);
   const { AddItemToCart } = useContext(CartContext);
 
   const handleQuantityIncrease = () => {
     const result = quantity + 1;
-    if (result <= stock) {
+    if (result <= 0) {
       setQuantity(result);
     }
   };
@@ -21,7 +21,7 @@ const MerceriaDetail = ({ id, description, price, Imagen, quantityInCart }) => {
     }
   };
 
-  const SendItemToCart = () => AddItemToCart({ id, description, price, Imagen }, quantity);
+  const SendItemToCart = () => AddItemToCart({ id, Imagen , category, price}, quantity);
 
   return (
     <div className="container mt-5">
@@ -30,7 +30,7 @@ const MerceriaDetail = ({ id, description, price, Imagen, quantityInCart }) => {
           <img src={Imagen} alt="Imagen" className="img-fluid" />
         </div>
         <div className="col-md-6">
-          <p className="lead">{description}</p>
+          <p className="lead">{Imagen}</p>
           <p><b>Price:</b> ${price}</p>
 
           <ItemQuantitySelector
@@ -54,5 +54,5 @@ const MerceriaDetail = ({ id, description, price, Imagen, quantityInCart }) => {
   );
 };
 
-export default MerceriaDetail;
+export default CursoDetail;
 

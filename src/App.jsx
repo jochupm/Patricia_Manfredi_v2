@@ -8,12 +8,11 @@ import Payment from './components/Payment';
 import NoResultPage from './components/NoResultsPage';
 import Footer from './components/Footer';
 import CursoListContainer from './components/CursoListContainer';
-import CursosDetailContainer from './components/CursosDetailContainer';
+import CursoDetailContainer from './components/CursoDetailContainer';
 import MoldetecaDetailContainer from './components/MoldetecaDetailContainer';
 import MoldetecaListContainer from './components/MoldetecaListContainer';
-import MerceriaListContainer from './components/MerceriaListContainer';
 import QuienesSomos from './components/QuienesSomos';
-import Blog from './components/Blog';
+import BlogList from './components/BlogList';
 
 function App() {
   return (
@@ -28,13 +27,12 @@ function App() {
                           <Route exact path="/moldeteca/category/" element={<MoldetecaListContainer />} />
                           <Route exact path="/moldeteca/:id" element={<MoldetecaDetailContainer />} />
 
-                          <Route exact path="/cursos/category/:category" element={<CursoListContainer />} />
-                          <Route exact path="/cursos/category/" element={<CursoListContainer />} />
-                          <Route exact path="/cursos/:id" element={<CursosDetailContainer />} />
+                          <Route exact path="/curso/category/:category" element={<CursoListContainer />} />
+                          <Route exact path="/curso/category/" element={<CursoListContainer />} />
+                          <Route exact path="/curso/:id" element={<CursoDetailContainer />} />
 
-                          <Route exact path="/merceria" element={<MerceriaListContainer />} />
                           <Route exact path="/quienes-somos" element={<QuienesSomos />} />
-                          <Route exact path="/blog" element={<Blog />} />
+                          <Route exact path="/blog" element={<BlogList />} />
 
                           <Route exact path="/cart" element={<Cart />} />
                           <Route exact path="/payment" element={<Payment />} />

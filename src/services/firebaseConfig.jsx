@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import {doc, getDocs, getDoc, collection, query, where, getFirestore, addDoc } from 'firebase/firestore' 
+import {doc, getDocs, getDoc, collection, query, where, getFirestore, addDoc } from 'firebase/firestore' ;
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -21,29 +21,23 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app)
 
-// Products & moldeteca
-export const GetProducts = () => {
-    return getDocs(collection(db, 'merceria')).then(response => {
-        return response.docs.map((doc) => {
-            const data = doc.data()
-            return {id: doc.id, ...data}
-        })
-    }).catch(err => {
-        console.log(err)
-    })
-}
 
-export const GetMolde = () => {
-    return getDocs(collection(db, 'moldeteca')).then(response => {
-        return response.docs.map((doc) => {
-            const data = doc.data()
-            return {id: doc.id, ...data}
-        })
-    }).catch(err => {
-        console.log(err)
-    })
-}
 
+export const GetMolde = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, "moldeteca"));
+      return querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+    } catch (error) {
+      console.error("Error fetching moldeteca:", error);
+      return [];
+    }
+  };
+
+
+// Obtener todos los cursos
 // export const GetCurso = () => {
 //     return getDocs(collection(db, 'cursos')).then(response => {
 //         return response.docs.map((doc) => {
@@ -55,31 +49,31 @@ export const GetMolde = () => {
 //     })
 // }
 
-export const GetCurso = () => {
-    return getDocs(collection(db, 'cursos'))
-      .then((response) => {
-        return response.docs.map((doc) => {
-          const data = doc.data();
-          return { id: doc.id, ...data }; // Devuelve datos completos junto con el ID
-        });
+
+
+// Obtener moldes filtrados por categoría
+export const GetFilteredMolde =  (category) => {
+  const queryString = query(collection(db, 'moldes'), where('category', '==', category))
+
+  return getDocs(queryString).then(response => {
+      return response.docs.map((doc) => {
+          const data = doc.data()
+          return {id: doc.id, ...data}
       })
-      .catch((err) => {
-        console.error("Error fetching courses:", err);
-        return [];
-      });
-  };
+  }).catch(err => {
+      console.log(err)
+  })
+}
 
-export const GetFilteredMolde = (category) => {
-    const queryString = query(collection(db, 'moldeteca'), where('category', '==', category))
-
-    return getDocs(queryString).then(response => {
-        return response.docs.map((doc) => {
-            const data = doc.data()
-            return {id: doc.id, ...data}
-        })
-    }).catch(err => {
-        console.log(err)
-    })
+export const GetDetailMolde = async (id) => {
+  try {
+      const docRef = doc(db, "moldeteca", id)
+      const docSnap = await getDoc(docRef)
+      return docSnap.data()
+  } catch (error) {
+      console.log(error)
+      return []
+  }
 }
 
 // export const GetFilteredCurso = (category) => {
@@ -95,84 +89,119 @@ export const GetFilteredMolde = (category) => {
 //     })
 // }
 
-// Obtener cursos filtrados por categoría
-export const GetFilteredCurso = (category) => {
-    // Si la categoría es "Todos", obtenemos todos los cursos
-    if (category === "Todos") {
-        return GetCurso(); // Llama a la función que obtiene todos los cursos
-    }
+// export const GetCursos =  () => {
+//   return getDocs(collection(db, 'cursos')).then(response => {
+//     return response.docs.map((doc) => {
+//         const data = doc.data()
+//         return {id: doc.id, ...data}
+//     })
+// }).catch(err => {
+//     console.log(err)
+// })
+// }
 
-    // Si hay una categoría específica, filtra por esa categoría
-    const queryString = query(
-        collection(db, "cursos"),
-        where("category", "==", category)
-    );
 
-    return getDocs(queryString)
-        .then((response) => {
-            return response.docs.map((doc) => {
-                const data = doc.data();
-                return { id: doc.id, ...data };
-            });
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+// export const GetFilteredCursos = async (category) => {
+//   const queryString = query(collection(db, 'cursos'), where('category', '==', category))
+
+//   return getDocs(queryString).then(response => {
+//       return response.docs.map((doc) => {
+//           const data = doc.data()
+//           return {id: doc.id, ...data}
+//       })
+//   }).catch(err => {
+//       console.log(err)
+//   })
+// }
+
+
+
+
+// export const GetDetailCurso = async (id) => {
+//   try {
+//     const docRef = doc(db, "cursos", id)
+//     const docSnap = await getDoc(docRef)
+//     return docSnap.data()
+// } catch (error) {
+//     console.log(error)
+//     return []
+// }
+// }
+
+
+export const GetCursos = () => {
+  return getDocs(collection(db, 'cursos'))
+    .then((response) => {
+      return response.docs.map((doc) => {
+        const data = doc.data();
+        return { id: doc.id, ...data };
+      });
+    })
+    .catch((err) => {
+      console.error("Error fetching courses:", err);
+      return []; // Retorna un arreglo vacío en caso de error
+    });
 };
 
 
-export const GetDetailProduct = async (id) => {
-    try {
-        const docRef = doc(db, "merceria", id)
-        const docSnap = await getDoc(docRef)
-        return docSnap.data()
-    } catch (error) {
-        console.log(error)
-        return []
-    }
-}
+export const GetFilteredCursos = async (category) => {
+  const queryString = query(collection(db, 'cursos'), where('category', '==', category));
+  return getDocs(queryString)
+    .then((response) => {
+      return response.docs.map((doc) => {
+        const data = doc.data();
+        return { id: doc.id, ...data };
+      });
+    })
+    .catch((err) => {
+      console.error(`Error fetching courses with category "${category}":`, err);
+      return []; // Retorna un arreglo vacío en caso de error
+    });
+};
 
-export const GetDetailMolde = async (id) => {
-    try {
-        const docRef = doc(db, "moldeteca", id)
-        const docSnap = await getDoc(docRef)
-        return docSnap.data()
-    } catch (error) {
-        console.log(error)
-        return []
-    }
-}
-
-// export const GetDetailCurso = async (id) => {
-//     try {
-//         const docRef = doc(db, "cursos", id)
-//         const docSnap = await getDoc(docRef)
-//         return docSnap.data()
-//     } catch (error) {
-//         console.log(error)
-//         return []
-//     }
-// }
-
-// Obtener detalles de un curso por ID
 export const GetDetailCurso = async (id) => {
-    try {
-      const docRef = doc(db, "cursos", id); // Reemplaza "db" con tu instancia de Firestore
-      const docSnap = await getDoc(docRef);
-  
-      if (docSnap.exists()) {
-        return docSnap.data(); // Retorna los datos del documento
-      } else {
-        console.error("No se encontró el documento.");
-        return null; // Retorna null si no existe el documento
-      }
-    } catch (error) {
-      console.error("Error al obtener el documento:", error);
-      return null; // Maneja errores retornando null
-    }
-  };
+  try {
+    const docRef = doc(db, "cursos", id);
+    const docSnap = await getDoc(docRef);
 
+    if (docSnap.exists()) {
+      return { id: docSnap.id, ...docSnap.data() };
+    } else {
+      console.warn(`Document with category "${id}" not found.`);
+      return null; // Devuelve null si el documento no existe
+    }
+  } catch (error) {
+    console.error("Error fetching course details:", error);
+    return null; // Retorna null en caso de error
+  }
+};
 
 export const InsertNewBuy = async (data) => {
     return await addDoc(collection(db, 'paymentTicket'), data).then(({id}) => {return id})
+}
+
+
+export const GetBlogs = () => {
+    const queryString = query(collection(db, 'blogs'))
+
+    return getDocs(queryString).then(response => {
+        return response.docs.map((doc) => {
+            const data = doc.data()
+            return {id: doc.id, ...data}
+        })
+    }).catch(err => {
+        console.log(err)
+    })
+}
+
+
+export const GetDetailBlog = async (id) => {
+    try {
+        const docRef = doc(db, "blogs", id)
+        const docSnap = await getDoc(docRef)
+        return docSnap.data()
+    } catch (error) {
+        console.log(error)
+        return []
+    }
 }

@@ -10,8 +10,8 @@ export const Cart = () => {
   const deleteItemHandler = (id) => RemoveItemFromCart(id);
 
   const [quantities, setQuantities] = useState(
-    cart.reduce((acc, item) => {
-      acc[item.id] = item.quantity;
+    cart.reduce((acc, curso) => {
+      acc[curso.id] = curso.quantity;
       return acc;
     }, {})
   );
@@ -25,51 +25,51 @@ export const Cart = () => {
 
   useEffect(() => {
     // Actualizar cantidades en el carrito cuando cambian las cantidades
-    cart.forEach((item) => {
-      if (quantities[item.id] !== item.quantity) {
-        UpdateCartItem(item.id, quantities[item.id]);
+    cart.forEach((curso) => {
+      if (quantities[curso.id] !== curso.quantity) {
+        UpdateCartItem(curso.id, quantities[curso.id]);
       }
     });
   }, [quantities, cart, UpdateCartItem]);
 
   return CartItemAmount() !== 0 ? (
     <div className="container mt-5">
-      {cart.map((item) => (
-        <div key={item.id} className="row mb-3">
+      {cart.map((curso) => (
+        <div key={curso.id} className="row mb-3">
           <div className="col-md-3">
-            <img src={item.Imagen} alt="Imagen" className="img-fluid" />
+            <img src={curso.Imagen} alt="Imagen" className="img-fluid" />
           </div>
           <div className="col-md-6">
-            <Link to={`/item/${item.id}`}>
-              <p className="mb-1"><b>{item.price}</b></p>
+            <Link to={`/curso/${curso.id}`}>
+              <p className="mb-1"><b>{curso.price}</b></p>
             </Link>
-            <p className="mb-0">{item.description}</p>
+            <p className="mb-0">{curso.description}</p>
           </div>
           <div className="col-md-3 d-flex flex-column align-items-center justify-content-center text-center">
             <div className="d-flex align-items-center">
               <span className="mr-2 font-weight-bold">Quantity:</span>
               <button
                 className="btn btn-secondary btn-sm mr-2"
-                onClick={() => updateQuantityHandler(item.id, Math.max(1, quantities[item.id] - 1))}
+                onClick={() => updateQuantityHandler(curso.id, Math.max(1, quantities[curso.id] - 1))}
               >
                 -
               </button>
               <input
                 type="number"
-                value={quantities[item.id]}
-                onChange={(e) => updateQuantityHandler(item.id, parseInt(e.target.value, 10))}
+                value={quantities[curso.id]}
+                onChange={(e) => updateQuantityHandler(curso.id, parseInt(e.target.value, 10))}
                 min="1"
                 className="form-control text-center"
               />
               <button
                 className="btn btn-secondary btn-sm ml-2"
-                onClick={() => updateQuantityHandler(item.id, quantities[item.id] + 1)}
+                onClick={() => updateQuantityHandler(curso.id, quantities[curso.id] + 1)}
               >
                 +
               </button>
             </div>
-            <p className="mb-1"><b>Total:</b> ${item.price * quantities[item.id]}</p>
-            <button onClick={() => deleteItemHandler(item.id)} className="btn btn-danger">
+            <p className="mb-1"><b>Total:</b> ${curso.price * quantities[curso.id]}</p>
+            <button onClick={() => deleteItemHandler(curso.id)} className="btn btn-danger">
               <AiFillDelete />
             </button>
           </div>

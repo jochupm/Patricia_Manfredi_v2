@@ -1,0 +1,14 @@
+/* Estilos para centrar la imagen */
+.home-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 77vh; /* Ajusta para que ocupe toda la altura */
+  }
+  
+  .home-image {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+  }
+  
