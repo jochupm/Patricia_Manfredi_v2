@@ -8,13 +8,13 @@ const CursoDetailContainer = () => {
   const { id } = useParams();
   const { cart } = useContext(CartContext);
 
-  const [curso, setCursos] = useState();
+  const [curso, setCurso] = useState();
   const [quantityInCart, setQuantityInCart] = useState(0);
 
   useEffect(() => {
     GetDetailCurso(id).then((data) =>{
       console.log("Data fetched:", data); // Esto mostrará el resultado en la consola
-      data.length !== 0 ? setCursos({ id: id, ...data }) : setCursos(data)
+      data.length !== 0 ? setCurso({ id: id, ...data }) : setCurso(data)
   });
 
     // Obtiene la cantidad del producto en el carrito

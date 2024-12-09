@@ -6,7 +6,7 @@ import Loader from './Loader';
 
 function CursoListContainer() {
   const { category } = useParams();
-  const [curso, setCursos] = useState([]);
+  const [curso, setCurso] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ function CursoListContainer() {
         } else {
           data = await GetCursos();
         }
-        setCursos(data);
+        setCurso(data);
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {

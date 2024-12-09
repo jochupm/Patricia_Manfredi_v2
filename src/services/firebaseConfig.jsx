@@ -144,37 +144,29 @@ export const GetCursos = () => {
 };
 
 
-export const GetFilteredCursos = async (category) => {
-  const queryString = query(collection(db, 'cursos'), where('category', '==', category));
-  return getDocs(queryString)
-    .then((response) => {
+export const GetFilteredCursos =  (categoria) => {
+  const queryString = query(collection(db, 'cursos'), where('categoria', '==', categoria))
+
+  return getDocs(queryString).then(response => {
       return response.docs.map((doc) => {
-        const data = doc.data();
-        return { id: doc.id, ...data };
-      });
-    })
-    .catch((err) => {
-      console.error(`Error fetching courses with category "${category}":`, err);
-      return []; // Retorna un arreglo vacío en caso de error
-    });
-};
+          const data = doc.data()
+          return {id: doc.id, ...data}
+      })
+  }).catch(err => {
+      console.log(err)
+  })
+}
 
 export const GetDetailCurso = async (id) => {
   try {
-    const docRef = doc(db, "cursos", id);
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) {
-      return { id: docSnap.id, ...docSnap.data() };
-    } else {
-      console.warn(`Document with category "${id}" not found.`);
-      return null; // Devuelve null si el documento no existe
-    }
-  } catch (error) {
-    console.error("Error fetching course details:", error);
-    return null; // Retorna null en caso de error
-  }
-};
+    const docRef = doc(db, "cursos", id)
+    const docSnap = await getDoc(docRef)
+    return docSnap.data()
+} catch (error) {
+    console.log(error)
+    return []
+}
+}
 
 export const InsertNewBuy = async (data) => {
     return await addDoc(collection(db, 'paymentTicket'), data).then(({id}) => {return id})
