@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import React, { useState, useEffect, useContext } from "react";
-import { GetDetailCurso } from "/Users/josep/Web_Development/Patricia_Manfredi/src/services/firebaseConfig";
+import { useEffect, useState, useContext } from 'react';
+import { GetDetailCurso } from "../services/firebaseConfig";
 import { CartContext } from "../provider/CartProvider";
 import CursoDetail from "./CursoDetail";
 
@@ -13,7 +13,7 @@ const CursoDetailContainer = () => {
 
   useEffect(() => {
     GetDetailCurso(id).then((data) =>{
-      console.log("Data fetched:", data); // Esto mostrará el resultado en la consola
+      //console.log("Data fetched:", data); // Esto mostrará el resultado en la consola
       data.length !== 0 ? setCurso({ id: id, ...data }) : setCurso(data)
   });
 
@@ -28,7 +28,8 @@ const CursoDetailContainer = () => {
 
   return (
     <div className='flex justify-center my-10'>
-      <CursoDetail {...curso} quantityInCart={quantityInCart} />
+      <CursoDetail {...curso} quantityInCart={quantityInCart} 
+      />
     </div>
   );
 };

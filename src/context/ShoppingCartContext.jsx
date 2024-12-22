@@ -26,7 +26,7 @@ console.log(cart)
 
 }
     return(
-<CartContext.Provider value={{cart, setCart, cadge, setBadge,agregarAlCarrito}} >
+<CartContext.Provider value={{cart, setCart, badge, setBadge,agregarAlCarrito}} >
     {children}
 
 

@@ -11,4 +11,14 @@
     max-height: 80%;
     object-fit: contain;
   }
-  
+
+
+  /* CART */
+
+   svg {
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+
+   }

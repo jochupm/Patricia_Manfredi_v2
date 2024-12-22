@@ -8,13 +8,14 @@ import {doc, getDocs, getDoc, collection, query, where, getFirestore, addDoc } f
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyC_FlBYlV9w6f3cokmMRO_5slR-JffWqkQ",
-    authDomain: "reactjs-eb7ba.firebaseapp.com",
-    projectId: "reactjs-eb7ba",
-    storageBucket: "reactjs-eb7ba.appspot.com",
-    messagingSenderId: "993512941723",
-    appId: "1:993512941723:web:05fb0dd3daf2a1dab37e3e"
-  };
+  apiKey: "AIzaSyC_FlBYlV9w6f3cokmMRO_5slR-JffWqkQ",
+  authDomain: "reactjs-eb7ba.firebaseapp.com",
+  // databaseURL: "https://reactjs-eb7ba-default-rtdb.firebaseio.com",
+  projectId: "reactjs-eb7ba",
+  storageBucket: "reactjs-eb7ba.appspot.com",
+  messagingSenderId: "993512941723",
+  appId: "1:993512941723:web:05fb0dd3daf2a1dab37e3e"
+};
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -35,20 +36,6 @@ export const GetMolde = async () => {
       return [];
     }
   };
-
-
-// Obtener todos los cursos
-// export const GetCurso = () => {
-//     return getDocs(collection(db, 'cursos')).then(response => {
-//         return response.docs.map((doc) => {
-//             const data = doc.data()
-//             return {id: doc.id, ...data}
-//         })
-//     }).catch(err => {
-//         console.log(err)
-//     })
-// }
-
 
 
 // Obtener moldes filtrados por categoría
@@ -76,57 +63,6 @@ export const GetDetailMolde = async (id) => {
   }
 }
 
-// export const GetFilteredCurso = (category) => {
-//     const queryString = query(collection(db, 'cursos'), where('category', '==', category))
-
-//     return getDocs(queryString).then(response => {
-//         return response.docs.map((doc) => {
-//             const data = doc.data()
-//             return {id: doc.id, ...data}
-//         })
-//     }).catch(err => {
-//         console.log(err)
-//     })
-// }
-
-// export const GetCursos =  () => {
-//   return getDocs(collection(db, 'cursos')).then(response => {
-//     return response.docs.map((doc) => {
-//         const data = doc.data()
-//         return {id: doc.id, ...data}
-//     })
-// }).catch(err => {
-//     console.log(err)
-// })
-// }
-
-
-// export const GetFilteredCursos = async (category) => {
-//   const queryString = query(collection(db, 'cursos'), where('category', '==', category))
-
-//   return getDocs(queryString).then(response => {
-//       return response.docs.map((doc) => {
-//           const data = doc.data()
-//           return {id: doc.id, ...data}
-//       })
-//   }).catch(err => {
-//       console.log(err)
-//   })
-// }
-
-
-
-
-// export const GetDetailCurso = async (id) => {
-//   try {
-//     const docRef = doc(db, "cursos", id)
-//     const docSnap = await getDoc(docRef)
-//     return docSnap.data()
-// } catch (error) {
-//     console.log(error)
-//     return []
-// }
-// }
 
 
 export const GetCursos = () => {
@@ -144,18 +80,19 @@ export const GetCursos = () => {
 };
 
 
-export const GetFilteredCursos =  (categoria) => {
-  const queryString = query(collection(db, 'cursos'), where('categoria', '==', categoria))
+export const GetFilteredCursos =  (category) => {
+  const queryString = query(collection(db, 'cursos'), where('category', '==', category))
 
   return getDocs(queryString).then(response => {
       return response.docs.map((doc) => {
           const data = doc.data()
           return {id: doc.id, ...data}
       })
-  }).catch(err => {
-      console.log(err)
-  })
-}
+  }).catch((err) => {
+    console.error("Error fetching filtered courses:", err);
+    return []; // Retorna un arreglo vacío en caso de error
+  });
+};
 
 export const GetDetailCurso = async (id) => {
   try {

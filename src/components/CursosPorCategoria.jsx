@@ -26,12 +26,10 @@ getDocs(itemsCollection).then((snapshot)=>{
             {
                 Curso.map((p)=>(
                     <div>
-                        <h1>Product: {c.name}</h1>
-                        <h4>Category: {c.category}</h4>
-                        <h4>Color: {p.color}</h4>
+                        <h1>Curso: {c.name}</h1>
+                        <h2>Categoría: {c.category}</h2>
+                        <h3>Nombre: {c.name}</h3>
                         <h4>Price: ${p.price}</h4>
-                        <p>Description: {p.description}</p>
-
                     </div>
                 ))
             }

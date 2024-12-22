@@ -7,10 +7,11 @@ function Curso(curso) {
       <img src="" alt="Imagen" width="32" height="32"/>
       <div >
         <div className="mb-2 text-xl font-bold">{curso.Imagen}</div>
-        <p>Price: ${curso.price}</p>
+        <p>Nombre: ${curso.name}</p>
+        <p>Precio: ${curso.price}</p>
       </div>
 
-        <Link className="items-center w-auto p-2 mx-2 my-2 text-center bg-orange-300 rounded-full hover:bg-orange-400" to={`/cursos/${curso.id}`}>Details</Link>
+        <Link className="items-center w-auto p-2 mx-2 my-2 text-center bg-orange-300 rounded-full hover:bg-orange-400" to={`/curso/${curso.id}`}>Details</Link>
     </div>
   )
 }

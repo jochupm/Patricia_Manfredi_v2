@@ -1,61 +1,16 @@
-// import { useContext, useState } from "react"
-// import { InsertNewBuy } from "../services/firebaseConfig"
-// import { CartContext } from "../provider/CartProvider"
-
-// const Payment = () => {
-//   const {ClearCart, GetTotalPriceCart} = useContext(CartContext)
-//   const [name, setName] = useState("")
-//   const [email, setEmail] = useState("")
-//   const [orderID, setOrderID] = useState(null)
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault()
-//     const data = {
-//       name,
-//       email,
-//       total: GetTotalPriceCart()
-//     }
-
-//     await InsertNewBuy(data).then(idOrder => {
-//       setOrderID(idOrder)
-//       ClearCart()
-//     })
-//   }
-//   return (
-//     <>
-//     {orderID === null ?
-//       <div className="items-center w-full p-12 h-max">
-//         <h1 className="self-center mb-12 text-center">Order Form</h1>
-//         <form action="" onSubmit={handleSubmit} className="flex flex-col items-center justify-center w-full gap-4">
-//           <input type="text" placeholder="Name" onChange={(e) => setName(e.target.value)} className="p-2 border border-orange-400 rounded"/>
-//           <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} className="p-2 border border-orange-400 rounded"/>
-
-//           <button type="submit" className="w-32 bg-orange-400 rounded">Submit Order</button>
-//         </form>
-        
-        
-//       </div>
-//       : <p className="self-center my-24 text-5xl text-center just">Your order ID is {orderID}</p> 
-//     }
-//     </>
-//   )
-// }
-
-// export default Payment
-
-
 import React, { useContext, useState } from "react";
 import { InsertNewBuy } from "../services/firebaseConfig";
 import { CartContext } from "../provider/CartProvider";
 
 const Payment = () => {
-  const { ClearCart, GetTotalPriceCart } = useContext(CartContext);
+  const { ClearCart, GetTotalPriceCart, cart } = useContext(CartContext); // Incluye cart en el contexto
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [orderID, setOrderID] = useState(null);
   const [emailError, setEmailError] = useState(null);
   const [phoneError, setPhoneError] = useState(null);
+  const [orderCart, setOrderCart] = useState([]); // Copia del carrito para mostrar después de limpiar
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -70,7 +25,7 @@ const Payment = () => {
     }
 
     // Validación de teléfono
-    const phoneRegex = /^[0-9]{10}$/;
+    const phoneRegex = /^[0-9]{10,13}$/;
     if (!phoneRegex.test(phone)) {
       setPhoneError("Please enter a valid phone number");
       return;
@@ -78,17 +33,26 @@ const Payment = () => {
       setPhoneError(null);
     }
 
+    // Guardar copia del carrito antes de limpiar
+    setOrderCart([...cart]);
+
+    // Preparar datos de la orden
     const data = {
       name,
       email,
       phone,
       total: GetTotalPriceCart(),
+      items: cart, // Enviar los cursos al backend
     };
 
-    await InsertNewBuy(data).then((idOrder) => {
+    // Enviar la orden a Firebase
+    try {
+      const idOrder = await InsertNewBuy(data);
       setOrderID(idOrder);
-      ClearCart();
-    });
+      ClearCart(); // Limpiar el carrito después de confirmar la orden
+    } catch (error) {
+      console.error("Error submitting order:", error);
+    }
   };
 
   return (
@@ -111,7 +75,7 @@ const Payment = () => {
                 type="email"
                 placeholder="Email"
                 onChange={(e) => setEmail(e.target.value)}
-                className={`form-control ${emailError ? 'is-invalid' : ''}`}
+                className={`form-control ${emailError ? "is-invalid" : ""}`}
                 required
               />
               {emailError && <div className="invalid-feedback">{emailError}</div>}
@@ -121,23 +85,52 @@ const Payment = () => {
                 type="tel"
                 placeholder="Phone"
                 onChange={(e) => setPhone(e.target.value)}
-                className={`form-control ${phoneError ? 'is-invalid' : ''}`}
+                className={`form-control ${phoneError ? "is-invalid" : ""}`}
                 required
               />
               {phoneError && <div className="invalid-feedback">{phoneError}</div>}
             </div>
-            <button type="submit" class="btn btn-info">
+            <button type="submit" className="btn btn-info">
               Submit Order
             </button>
           </form>
         </div>
       ) : (
-        <p className="mt-5 text-5xl text-center">
-          Your order ID is: <b> {orderID}</b>
-        </p>
+        <div className="container mt-5 text-center">
+          <h4>
+            Tu número de orden es: <b>{orderID}</b>
+          </h4>
+          <p>Te vamos a mandar un mail para coordinar el pago.</p>
+          <p>Gracias por tu pedido :)</p>
+          <div className="mt-4">
+            <h5>Resumen de tu pedido:</h5>
+            <ul className="list-group">
+              {orderCart && orderCart.length > 0 ? (
+                <>
+                  {orderCart.map((curso, index) => (
+                    <li key={index} className="list-group-item">
+                      <h4>Categoría: {curso.category || "Sin categoría"}</h4>
+                      <h4>Curso: {curso.name || "Sin categoría"}</h4>
+                      <h4>Precio: ${curso.price || "0.00"}</h4>
+                      <h4>Cantidad: {curso.quantity || "0.00"}</h4>
+                      <p>Descripción: {curso.description || "Sin descripción"}</p>
+                    </li>
+                  ))}
+                  <li className="list-group-item text-end">
+                    <h4>Total: ${GetTotalPriceCart()} </h4>
+                  </li>
+                </>
+              ) : (
+                <li className="list-group-item">No hay cursos en tu pedido.</li>
+              )}
+            </ul>
+          </div>
+        </div>
       )}
     </>
   );
 };
 
 export default Payment;
+
+

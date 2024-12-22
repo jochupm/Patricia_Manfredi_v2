@@ -1,4 +1,5 @@
 import React from "react";
+import CartWidget from './CartWidget';
 import { Flex, Box, Image, Link, Menu, MenuButton, MenuList, MenuItem, Button } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons"; // Dropdown icon
 import logo from "/Users/josep/Web_Development/Patricia_Manfredi/img/Patricia Manfredi Logo.png";
@@ -20,16 +21,16 @@ const NavBar = () => {
             Cursos Online
           </MenuButton>
           <MenuList>
-            <MenuItem as={Link} href="/cursos/lenceria">
+            <MenuItem as={Link} href="/category/lenceria">
               Lencería
             </MenuItem>
-            <MenuItem as={Link} href="/cursos/corte-y-confeccion">
+            <MenuItem as={Link} href="/category/corte-y-confeccion">
               Corte y Confección
             </MenuItem>
-            <MenuItem as={Link} href="/cursos/danza">
+            <MenuItem as={Link} href="/category/danza">
               Danza
             </MenuItem>
-            <MenuItem as={Link} href="/cursos/todos">
+            <MenuItem as={Link} href="/category/">
               Todos
             </MenuItem>
           </MenuList>
@@ -44,6 +45,8 @@ const NavBar = () => {
         <Link href="/blog" className="navbar-link">
           Blog
         </Link>
+        <CartWidget />
+
       </Flex>
     </Flex>
   );

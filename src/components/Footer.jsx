@@ -49,7 +49,7 @@ const Footer = () => {
       </Flex>
 
       <Flex justify="center" gap={8} className="footer-links" mb={4}>
-        <Link href="/cursos/todos" className="footer-link">
+        <Link href="/category/" className="footer-link">
           Cursos Online
         </Link>
         <Link href="/moldeteca" className="footer-link">

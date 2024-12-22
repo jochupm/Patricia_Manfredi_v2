@@ -12,6 +12,7 @@
   "dependencies": {
     "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "^2.8.1",
+    "@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
     "bootstrap": "^5.3.2",
     "express": "^4.21.1",
     "firebase": "^10.14.1",
