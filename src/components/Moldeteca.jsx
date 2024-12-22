@@ -12,7 +12,7 @@ function Moldeteca(moldeteca) {
             className="font-bold hover:text-pink-500"
             to={`/moldeteca/${moldeteca.id}`}
           >
-            Details
+            Detalles
           </Link>
           </p>
       </div>

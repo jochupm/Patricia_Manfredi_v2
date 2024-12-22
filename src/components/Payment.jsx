@@ -1,3 +1,5 @@
+
+
 import React, { useContext, useState } from "react";
 import { InsertNewBuy } from "../services/firebaseConfig";
 import { CartContext } from "../provider/CartProvider";
@@ -8,6 +10,7 @@ const Payment = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [orderID, setOrderID] = useState(null);
+  const [orderDate, setOrderDate] = useState(""); // Nueva variable para la fecha
   const [emailError, setEmailError] = useState(null);
   const [phoneError, setPhoneError] = useState(null);
   const [orderCart, setOrderCart] = useState([]); // Copia del carrito para mostrar después de limpiar
@@ -36,6 +39,9 @@ const Payment = () => {
     // Guardar copia del carrito antes de limpiar
     setOrderCart([...cart]);
 
+    // Generar la fecha actual
+    const currentDate = new Date().toISOString(); // Guardar en formato ISO
+
     // Preparar datos de la orden
     const data = {
       name,
@@ -43,12 +49,14 @@ const Payment = () => {
       phone,
       total: GetTotalPriceCart(),
       items: cart, // Enviar los cursos al backend
+      date: currentDate, // Incluir la fecha
     };
 
     // Enviar la orden a Firebase
     try {
       const idOrder = await InsertNewBuy(data);
       setOrderID(idOrder);
+      setOrderDate(currentDate); // Guardar la fecha para mostrarla en la interfaz
       ClearCart(); // Limpiar el carrito después de confirmar la orden
     } catch (error) {
       console.error("Error submitting order:", error);
@@ -103,6 +111,7 @@ const Payment = () => {
           <p>Te vamos a mandar un mail para coordinar el pago.</p>
           <p>Gracias por tu pedido :)</p>
           <div className="mt-4">
+            <h5>Fecha de la Orden: {new Date(orderDate).toLocaleString()}</h5> {/* Mostrar la fecha */}
             <h5>Resumen de tu pedido:</h5>
             <ul className="list-group">
               {orderCart && orderCart.length > 0 ? (
@@ -132,5 +141,3 @@ const Payment = () => {
 };
 
 export default Payment;
-
-

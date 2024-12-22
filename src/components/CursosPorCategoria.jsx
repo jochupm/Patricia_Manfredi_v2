@@ -29,7 +29,7 @@ getDocs(itemsCollection).then((snapshot)=>{
                         <h1>Curso: {c.name}</h1>
                         <h2>Categoría: {c.category}</h2>
                         <h3>Nombre: {c.name}</h3>
-                        <h4>Price: ${p.price}</h4>
+                        <h4>Precio: ${p.price}</h4>
                     </div>
                 ))
             }

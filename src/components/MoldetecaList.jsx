@@ -7,7 +7,7 @@ function Moldeteca(moldeteca) {
       <img src="" alt="Imagen" width="32" height="32"/>
       <div >
         <div className="mb-2 text-xl font-bold">{moldeteca.description}</div>
-        <p>Price: ${moldeteca.price}</p>
+        <p>Precio: ${moldeteca.price}</p>
       </div>
 
         <Link className="items-center w-auto p-2 mx-2 my-2 text-center bg-orange-300 rounded-full hover:bg-orange-400" to={`/item/${item.id}`}>Details</Link>

@@ -12,7 +12,7 @@ return (
           className="font-bold hover:text-pink-500"
           to={`/cursos/${curso.id}`}
         >
-          Details
+          Más detalles
         </Link>
         </p>
     </div>

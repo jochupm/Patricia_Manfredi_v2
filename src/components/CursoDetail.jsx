@@ -29,10 +29,10 @@ const CursoDetail = ({ id, Imagen, category, name, price, description, quantityI
             <b>Nombre:</b> {name}
           </p>
           <p>
-            <b>Price:</b> ${price}
+            <b>Precio:</b> ${price}
           </p>
           <p>
-            <b>Descripcion:</b> {description}
+            <b>Descripción:</b> {description}
           </p>
 
           <ItemQuantitySelector
@@ -42,11 +42,11 @@ const CursoDetail = ({ id, Imagen, category, name, price, description, quantityI
           />
 
           <p className="mt-3">
-            <b>Total Price:</b> ${price * quantity}
+            <b>Precio Total:</b> ${price * quantity}
           </p>
 
           <Link to={"/cart"} onClick={SendItemToCart} className="btn btn-primary">
-            <b>Add to Cart</b>
+            <b>Añadir al carrito</b>
           </Link>
         </div>
       </div>

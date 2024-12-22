@@ -1,27 +1,3 @@
-// import { useParams } from 'react-router-dom'
-// import { useEffect, useState } from 'react'
-// import { ItemDetail } from './ItemDetail'
-// import { GetDetailProduct } from '../services/firebaseConfig'
-// const ItemDetailContainer = () => {
-//   const {id} = useParams()
-
-//   const [product, setProduct] = useState()
-
-//   useEffect(() => {
-//     GetDetailProduct(id).then(data => data.length !== 0 ? setProduct({id: id, ...data}) : setProduct(data))
-//   }, [id])
-  
-//   return (
-//     <div className='flex justify-center my-10'>
-//       <ItemDetail {...product}/>
-//     </div>
-      
-//   )
-// }
-
-// export default ItemDetailContainer
-
-
 
 import { useParams } from 'react-router-dom';
 import { useEffect, useState, useContext } from 'react';
