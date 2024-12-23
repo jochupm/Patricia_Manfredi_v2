@@ -76,7 +76,7 @@
   }
 
 
- ## Centrado de las imágenes en los blogs 
+ /* Centrado de las imágenes en los blogs  */
 .blog-image-container {
   display: flex;
   justify-content: center;
