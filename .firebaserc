@@ -1,5 +1,11 @@
 {
   "projects": {
     "default": "reactjs-eb7ba"
+  },
+  "targets": {},
+  "etags": {
+    "reactjs-eb7ba": {
+      "extensionInstances": {}
+    }
   }
 }
