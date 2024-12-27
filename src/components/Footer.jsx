@@ -71,6 +71,9 @@ const Footer = () => {
         <Link href="/blog" className="footer-link">
           Blog
         </Link>
+        <Link href="/contacto" className="footer-link">
+          Contacto
+        </Link>
       </Flex>
 
       <Text textAlign="center" fontSize="sm" color="gray.500" mt={4}>
