@@ -1,0 +1,105 @@
+/* Contenedor principal */
+.contacto-flex-grow-1 {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 50px; /* Reduce el padding para pantallas pequeñas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh; /* Asegura que ocupe todo el alto de la pantalla */
+    box-sizing: border-box; /* Incluye padding en el cálculo del tamaño */
+}
+
+/* Contenedor interior */
+.contacto-container {
+    max-width: 950px;
+    width: 100%; /* Asegura que se ajuste al ancho del padre */
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Media Queries para dispositivos más pequeños */
+@media (max-width: 768px) {
+    .flex-grow-1 {
+        padding: 20px; /* Reduce el padding en pantallas pequeñas */
+    }
+
+    .container {
+        max-width: 100%; /* Ocupa todo el ancho disponible */
+        padding: 15px; /* Ajusta el padding para mantener el diseño limpio */
+    }
+}
+
+@media (max-width: 480px) {
+    .flex-grow-1 {
+        padding: 10px; /* Ajusta aún más el padding en pantallas pequeñas */
+    }
+
+    .container {
+        padding: 10px; /* Reduce el padding del contenedor */
+    }
+}
+  
+  /* Título */
+  .title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+  }
+  
+  /* Formulario */
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Etiquetas */
+  .label {
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  /* Entradas de texto */
+  .input, .textarea {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  /* Textarea */
+  .textarea {
+    min-height: 100px;
+  }
+  
+  /* Botón */
+  .button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Estado del envío */
+  .status {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #007bff;
+    text-align: center;
+  }
+  

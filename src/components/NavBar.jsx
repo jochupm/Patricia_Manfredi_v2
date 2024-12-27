@@ -45,6 +45,9 @@ const NavBar = () => {
         <Link href="/blog" className="navbar-link">
           Blog
         </Link>
+        <Link href="/contacto" className="navbar-link">
+          Contacto
+        </Link>
         <CartWidget />
 
       </Flex>

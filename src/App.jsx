@@ -13,7 +13,9 @@ import MoldetecaDetailContainer from './components/MoldetecaDetailContainer';
 import MoldetecaListContainer from './components/MoldetecaListContainer';
 import QuienesSomos from './components/QuienesSomos';
 import BlogList from './components/BlogList';
-import CursoDetail from './components/CursoDetail';
+import BlogDetailContainer from './components/BlogDetailContainer'
+import Contacto from './components/Contacto';
+// import CursoDetail from './components/CursoDetail';
 
 function App() {
   return (
@@ -28,18 +30,23 @@ function App() {
                           <Route exact path="/moldeteca/category/" element={<MoldetecaListContainer />} />
                           <Route exact path="/moldeteca/:id" element={<MoldetecaDetailContainer />} />
 
-                          {/* <Route exact path="/cursos/:category" element={<CursoListContainer />} /> */}
                           <Route exact path="/category/:category" element={<CursoListContainer />} />
-                          {/* <Route exact path="/cursos/todos" element={<CursoListContainer />} /> */}
                           <Route exact path="/category/" element={<CursoListContainer />} />
                           <Route exact path="/cursos/:id" element={<CursoDetailContainer />} />
 
                           <Route exact path="/quienes-somos" element={<QuienesSomos />} />
+
                           <Route exact path="/blog" element={<BlogList />} />
+                          <Route exact path="/blog/:id" element={<BlogDetailContainer />} />
+
+                        <Route exact path="/contacto" element={<Contacto/>}/>
 
                           <Route exact path="/cart" element={<Cart />} />
+
                           <Route exact path="/payment" element={<Payment />} />
+
                           <Route exact path="/error" element={<NoResultPage />} />
+
                       </Routes>
                   </main>
                   <Footer />

@@ -1,0 +1,93 @@
+/* Contenedor principal */
+.blog-detail-container {
+    max-width: 800px;
+    margin: 50px auto; /* Aumenta el margen superior */
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  /* Filas */
+  .blog-detail-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  
+  /* Columna de imagen */
+  .blog-detail-image {
+    flex: 1;
+    max-width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Columna de detalles */
+  .blog-detail-details {
+    flex: 1;
+    color: #333;
+    padding: 10px; /* Agrega un poco de espacio interno */
+  }
+  
+  /* Título */
+  .blog-detail-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 20px;
+  }
+  
+  /* Descripción */
+  .blog-detail-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+  }
+  
+  /* Responsividad */
+  @media (max-width: 768px) {
+    .blog-detail-container {
+      padding: 15px;
+    }
+  
+    .blog-detail-row {
+      flex-direction: column; /* Pone las columnas en una fila vertical */
+      align-items: center; /* Centra el contenido */
+    }
+  
+    .blog-detail-image {
+      max-width: 90%; /* Reduce el tamaño de la imagen en pantallas pequeñas */
+    }
+  
+    .blog-detail-details {
+      padding: 0; /* Elimina padding extra en dispositivos pequeños */
+      text-align: center; /* Centra el texto */
+    }
+  
+    .blog-detail-title {
+      font-size: 24px; /* Ajusta el tamaño del título */
+    }
+  
+    .blog-detail-description {
+      font-size: 14px; /* Ajusta el tamaño de la descripción */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .blog-detail-container {
+      margin: 30px auto; /* Reduce el margen superior en pantallas muy pequeñas */
+    }
+  
+    .blog-detail-title {
+      font-size: 20px; /* Tamaño más pequeño para pantallas pequeñas */
+    }
+  
+    .blog-detail-description {
+      font-size: 12px; /* Ajusta la fuente en pantallas más pequeñas */
+    }
+  }
+  

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Flex, Box, IconButton, Link, Text } from '@chakra-ui/react';
-import { FaFacebook, FaInstagram, FaWhatsapp, FaYoutube } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaWhatsapp, FaYoutube, FaEnvelope } from 'react-icons/fa';
+
 
 const Footer = () => {
   return (
@@ -42,6 +43,15 @@ const Footer = () => {
           target="_blank"
           aria-label="YouTube"
           icon={<FaYoutube />}
+          size="lg"
+          variant="ghost"
+          className="footer-icon-button"
+        />
+        <IconButton
+          as="a"
+          href="mailto:patricia@vestuariosballetpm.com"
+          aria-label="Correo"
+          icon={<FaEnvelope />}
           size="lg"
           variant="ghost"
           className="footer-icon-button"
